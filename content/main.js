@@ -63,9 +63,16 @@ let main = {
     };
     window.openDialog("chrome://global/content/selectDialog.xul",
                       "_blank", "modal,resizable,centerscreen", bag);*/
-	var test = window.prompt("Nepomuk-bookmark this page\n\n(" + url + ")\n\nas", doc.title);
-	if (test) {
-		window.alert(test);
+	var desc = window.prompt("Nepomuk-bookmark this page\n\n(" + url + ")\n\nas", doc.title);
+	if (desc) {
+		var file = Components.classes["@mozilla.org/file/local;1"]
+			    .createInstance(Components.interfaces.nsILocalFile);
+		file.initWithPath("/home/lim/bin/create-bookmark");
+		var process = Components.classes["@mozilla.org/process/util;1"]
+			    .createInstance(Components.interfaces.nsIProcess);
+		process.init(file);
+		var args = new Array(url, desc);
+		process.run(false, args, 2);
 	}
   },
 

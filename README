@@ -1,6 +1,9 @@
-This is supposed to be a firefox add-on that lets you create Nepomuk bookmarks
+This is a firefox add-on that lets you create Nepomuk bookmarks
 so it shows up, for eg, in a Plasma Active activity.
 
-Unfortunately the completed version got lost, so this is a broken stub that
-I'm putting here in case I might need such an add-on again someday, then
-I'll have something to start with.
+You'll need to make the create-bookmark script executable, and
+manually change the string "/home/lim/bin/create-bookmark" in
+content/main.js to the path to your create-bookmark script before
+zipping and installing.
+
+Hacked up solutions tend to be this way :)

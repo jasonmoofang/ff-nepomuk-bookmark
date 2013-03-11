@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+import sys
+from PyKDE4 import kdecore
+from PyKDE4 import kdeui
+from PyKDE4.nepomuk import Nepomuk
+
+if(len(sys.argv) < 3):
+    print "usage: create-bookmark <url> <desc>";
+    sys.exit();
+#website_resource = Nepomuk.Resource(kdecore.KUrl("http://blogsuki.com/"))
+website_resource = Nepomuk.Resource(kdecore.KUrl(sys.argv[1]))
+website_resource.addType(Nepomuk.Vocabulary.NFO.Bookmark())
+website_resource.setProperty(Nepomuk.Vocabulary.NFO.bookmarks(), Nepomuk.Variant(sys.argv[1]))
+website_resource.setDescription(sys.argv[2])
+print website_resource.type();
+props = website_resource.properties();
+for key in props.keys():
+    print key;
+    print props[key].toString();
